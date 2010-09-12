@@ -1,0 +1,28 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<menus>
+   <menu id="mnFile" title="File">
+        <menu id="mnBackup" title="Backup">
+           <menu id="mnBackupAll" title="All"></menu>
+           <menu id="mnBackupContact" title="Contact Only" disabled="true"></menu>    
+        </menu>
+        <menu id="mnRestore" title="Restore"></menu>
+   </menu>
+   <menu id="mnAction" title="Actions" >
+        <menu id="mnNewContact" title="New Contact" ></menu>
+        <menu title="-"></menu>
+        <menu id="mnContact" title="Call This Contact" ></menu>
+        <menu id="mnRemoveContact" title="Delete This Contact" ></menu>
+   </menu>
+     <menu id="mnRemoveContact" title="XT Sample" >
+          <menu id="sample1" title="XT Accordion" ></menu>
+          <menu id="sample2" title="XT Mdi Layout" ></menu>
+          <menu id="sample3" title="XT Statusbar" ></menu>
+          <menu id="sample4" title="XT Panel" ></menu>
+          <menu id="sample5" title="XT Toolbar" ></menu>
+          <menu id="sample6" title="XT Menubar" ></menu>
+          <menu id="sample7" title="XT Button" ></menu>
+          <menu id="sample8" title="XT Textbox" ></menu>
+          <menu id="sample9" title="XT Tooltip" ></menu>
+          
+     </menu>
+</menus>
