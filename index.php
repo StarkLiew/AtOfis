@@ -70,9 +70,9 @@
 <body>
 
   <div id="TopPanel">
-   <div id="mainHeader" >  
+   <div id="mainHeader" style="background:#000;text-align:center;">  
      
-       <h1><span style="font-style:italic;">j</span>XT<span style='color:#BFDBFF;vertical-align:sub;font-size:12px'> Project</span></h1>
+      <img src='../images/jxt_logo.gif' align="absmiddle" style="height:34px;width:42px;" /><span style="color:#ffffff;text-shadow: 1px 1px 0px #bad3ed;"> Project</span></h1>
 
    </div>
        <div id="menubar">
@@ -121,8 +121,8 @@
    As long as the copyright header left intact, you are free to use jXT project for your personal  to commercial project.
     <br /> <br />
     License under: <br /> <br />
-    MIT License &nbsp;<a target="_blank" href='http://en.wikipedia.org/wiki/MIT_License'>Find out...</a><br />
-    GPL License &nbsp;<a target="_blank" href='http://en.wikipedia.org/wiki/GNU_General_Public_License'>Find out...</a><br />
+    <a href="http://github.com/jxt/jXT/blob/master/MIT-LICENSE.txt">MIT License</a> &nbsp;<a target="_blank" href='http://en.wikipedia.org/wiki/MIT_License'>Find out...</a><br />
+     <a href="http://github.com/jxt/jXT/blob/master/GPL-LICENSE.txt">GPL License</a> &nbsp;<a target="_blank" href='http://en.wikipedia.org/wiki/GNU_General_Public_License'>Find out...</a><br />
 
 
     </div>
@@ -134,7 +134,10 @@
              
              <div style="overflow:auto;background:#fff;height:100%;white-space:normal;padding:10px;margin:2px;">
                   <h1>DOWNLOAD</h1>
-                  <a target="_blank" href="http://xt.atofis.com/jquery-xt.1.0.1_beta.rar"><button>Download jXT 1.0.1 - 9/2/2010</button></a>
+                 
+                  <a target="_blank" href="http://github.com/jxt/jXT/zipball/master"><button>Download jXT 1.0.1 - ZIP</button></a>
+                  <a target="_blank" href="http://github.com/jxt/jXT/tarball/master"><button>Download jXT 1.0.1 - TAR</button></a>
+                 
                   <br />
                   <br />
                  Requirement: jQuery 1.4 above <br>
