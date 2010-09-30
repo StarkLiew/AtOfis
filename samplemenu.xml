@@ -1,28 +1,33 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <menus>
    <menu id="mnFile" title="File">
-        <menu id="mnBackup" title="Backup">
-           <menu id="mnBackupAll" title="All"></menu>
-           <menu id="mnBackupContact" title="Contact Only" disabled="true"></menu>    
+        <menu id="mnBackup" title="Download">
+           <menu id="mnBackupAll" title="All" disabled="true"></menu>
+           <menu id="mnBackupContact" title="jXT - ZIP" ></menu>
+           <menu id="mnBackupContact" title="jXT - TAR" ></menu>   
         </menu>
-        <menu id="mnRestore" title="Restore"></menu>
+        <menu id="mnRestore" title="Import from GitHub"></menu>
    </menu>
    <menu id="mnAction" title="Actions" >
-        <menu id="mnNewContact" title="New Contact" ></menu>
+        <menu id="mnNewContact" title="Join Forum" ></menu>
         <menu title="-"></menu>
-        <menu id="mnContact" title="Call This Contact" ></menu>
-        <menu id="mnRemoveContact" title="Delete This Contact" ></menu>
+        <menu id="mnContact" title="Goto Forum" ></menu>
+        <menu id="mnRemoveContact" title="Create Ticket" ></menu>
    </menu>
-     <menu id="mnRemoveContact" title="XT Sample" >
-          <menu id="sample1" title="XT Accordion" ></menu>
-          <menu id="sample2" title="XT Mdi Layout" ></menu>
-          <menu id="sample3" title="XT Statusbar" ></menu>
-          <menu id="sample4" title="XT Panel" ></menu>
-          <menu id="sample5" title="XT Toolbar" ></menu>
-          <menu id="sample6" title="XT Menubar" ></menu>
-          <menu id="sample7" title="XT Button" ></menu>
-          <menu id="sample8" title="XT Textbox" ></menu>
-          <menu id="sample9" title="XT Tooltip" ></menu>
+     <menu id="mnRemoveContact" title="Toturial" >
+          <menu id="sample1" title="Accordion" ></menu>
+          <menu id="sample2" title="Mdi Layout" ></menu>
+          <menu id="sample3" title="Statusbar" ></menu>
+          <menu id="sample4" title="Panel" ></menu>
+          <menu id="sample5" title="Toolbar" ></menu>
+          <menu id="sample6" title="Menubar" ></menu>
+          <menu id="sample7" title="Button" ></menu>
+          <menu id="sample8" title="Textbox" ></menu>
+          <menu id="sample9" title="Tooltip" ></menu>
+          <menu id="sample10" title="Tab" ></menu>
+          <menu id="sample11" title="Dialog" ></menu>
+          <menu id="sample12" title="Calendar" ></menu>
+          <menu id="sample13" title="Calendar Dropdown" ></menu>
           
      </menu>
 </menus>
