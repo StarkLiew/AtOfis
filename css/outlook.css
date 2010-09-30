@@ -21,7 +21,7 @@
 .xt-titlebar{background:#DFE8F6 url(../images/xt/xt_title_bar.jpg) repeat-x;border:1px solid #b0cff7;overflow:auto;vertical-align:middle;vertical-align:middle;font-size:14px;font-weight:bold;color:#15428b;}
 .xt-panel{background:#DFE8F6;border:1px solid #b0cff7;overflow:auto;vertical-align:top;}
 /* Button */
-.xt-normal-button{margin:2px;height:23px;background:url(../images/xt/xt_button.jpg) repeat-x;border:1px solid #6593cf;cursor:pointer;}
+.xt-normal-button{font-weight:bold;text-shadow: 1px 1px 0px #bad3ed;margin:2px;line-height:13px;height:23px;background:url(../images/xt/xt_button.jpg) repeat-x;border:1px solid #6593cf;cursor:pointer;}
 .xt-normal-button:hover{background:url(../images/xt/xt_button_hover.jpg) repeat-x}
 .xt-normal-button:active{background:url(../images/xt/xt_button_active.jpg) repeat-x}
 .xt-normal-button.xt-button-seperator-arrow{background:url(../images/xt/button_seperator_arrow.gif) 50% 50% no-repeat}
@@ -32,6 +32,7 @@
 .xt-textbox:focus{border:1px solid #7eadd9;}
 .xt-textbox.error{border:1px solid #f50415;}
 .xt-textbox:focus{outline:none;}
+.xt-textbox button span{background: url(../images/xt/button_arrow_down.gif) no-repeat 50% 50%;}
 /* Toolbar */
 .xt-toolbar{background:#DFE8F6 url(../images/xt/xt_toolbar_bg.jpg) repeat-x;border:1px solid #b0cff7;border-bottom:1px solid #6593cf;padding:2px;margin:2px;}
 .xt-toolbar input[type='textbox']{float:none;height:12px;margin:0px;}
@@ -41,12 +42,30 @@
 /* Tooltip */
 .xt-tooltip{padding:2px;font-size:10px;background:url(../images/xt/xt_tooltip_bg.jpg) repeat-x;display:none;border:1px solid #606060;;position:absolute;}
 
+/*Tab */
+.xt-tab{background:#bfdbff;}
+.xt-tab li a{color:#000;}
+.xt-tab li a:hover{color:#000;}
+.xt-tab li a:visited{color:#000;}
+.xt-tab li.active{background:url(../images/xt/xt_tab_left.jpg) no-repeat left top;}
+.xt-tab li.active a{background:url(../images/xt/xt_tab_right.jpg) no-repeat right top;}
+.xt-tab li.active span{background:url(../images/xt/xt_tab_bg.jpg) repeat-x top;}
+.xt-tab li.active:hover{background:url(../images/xt/xt_tab_left_active.jpg) no-repeat left top;}
+.xt-tab li.active:hover a{background:url(../images/xt/xt_tab_right_active.jpg) no-repeat right top;}
+.xt-tab li.active:hover span{background:url(../images/xt/xt_tab_bg_active.jpg) repeat-x top;}
+.xt-tab li:hover{background:url(../images/xt/xt_tab_left_hover.jpg) no-repeat left top;}
+.xt-tab li:hover a{background:url(../images/xt/xt_tab_right_hover.jpg) no-repeat right top;}
+.xt-tab li:hover span{background:url(../images/xt/xt_tab_bg_hover.jpg) repeat-x top;}
+.xt-tab-content {background:#e7eff8;border:1.5px solid #8db2e3;}
+
+
 /* Accordion */
 .xt-accordion{border:1px solid transparent;}
 .xt-accordion-header{cursor:pointer;background:#DFE8F6 url(../images/xt/xt_accordion_button.jpg) repeat-x;border-left:1px solid #b0cff7;border-right:1px solid #b0cff7;}
 .xt-accordion-header a{text-decoration:none;color:#000000;font-size:11px;font-family:arial,tahoma, helvetica, sans-serif;}
 .xt-accordion-header a:visited{color:#000000;}
 .xt-accordion-content{background:#ffffff;border:1px solid #b0cff7;}
+
 
 /* Menu */
 .xt-menubar{background:#bfdbff;}
@@ -61,4 +80,28 @@
 .xt-menu-item.seperator{background:transparent url(../images/xt/xt_menu_seperator.gif) repeat-x 50%;border-top:1px solid transparent;}
 .xt-menu-item.seperator:hover{background:transparent url(../images/xt/xt_menu_seperator.gif) repeat-x 50%;border:1px solid transparent;}
 .xt-menu-icon-box{background:#e9eeee;width:20px;border:1px solid #6593cf;}
+
+/* Dialog */
+.xt-dialog{}
+.xt-dialog div.topleft{background:url(../images/xt/xt_dialog_top_left.gif) no-repeat left top;}
+.xt-dialog div.topright{background:url(../images/xt/xt_dialog_top_right.gif) no-repeat right top;}
+.xt-dialog div.top{background:url(../images/xt/xt_dialog_top.gif) repeat-x top;}
+.xt-dialog div.content{background:#e3efff;border:1px solid #3b5a82;border-top:1px solid transparent; }
+.xt-dialog div.inner{}
+.xt-dialog div button.titlebutton{border:none;background:transparent url(../images/xt/xt_close_icon.gif) no-repeat bottom;}
+.xt-overlay{background:#068;position:absolute;z-index:8000;width:100%;height:100%;filter:alpha(opacity=50);-moz-opacity:0.5;-khtml-opacity: 0.5;opacity: 0.5;}
+
+/* Calendar */
+.xt-calendar{background:#ffffff;border:1px solid #7f9db9;}
+.xt-calendar div.activeday{color:#000000;border:1px solid transparent;}
+.xt-calendar div.activeday:active{background:#fbc84f;border:1px solid transparent;}
+.xt-calendar div.activeday.today{background:#ffffff;border:1px solid #bb5503;}
+.xt-calendar div.activeday.today:active{background:#fbc84f;}
+.xt-calendar div.inactiveday{color:#b3b3b3;border:1px solid transparent;}
+.xt-calendar div.dayprefix{color:#000000;border:1px solid transparent;}
+.xt-calendar div.title{background:#bfdbff;color:#000000;}
+.xt-calendar div.daycontainer{border-top:1px solid #9ac6ff;border-bottom:1px solid #9ac6ff;}
+.xt-calendar button.prev{border:none;background:url(../images/xt/button_arrow_left.gif) no-repeat 50% 50%}
+.xt-calendar button.next{border:none;background:url(../images/xt/button_arrow_right.gif) no-repeat 50% 50%}
+
 
