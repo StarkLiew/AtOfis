@@ -6,7 +6,7 @@
     <meta http-equiv="Content-Type"content="text/html;charset=utf-8">    
     <meta http-equiv="X-UA-Compatible" content="IE=EmulateIE8"> 
     <meta name="google-site-verification" content="8w07JkrqcthcVqNajiuLfIehzQww7Sw0Qe7Q1zJYNQc" />
-    
+     
     <meta content="en" http-equiv="Content-Language">
     <meta name="AtOfis" content="jquery,jquery extender,jquery extend,jquery plugin">
     <meta http-equiv="Content-Type"content="text/html;charset=utf-8">    
@@ -145,8 +145,8 @@
    As long as the copyright header left intact, you are free to use AtOfis project for your personal  to commercial project.
     <br /> <br />
     License under: <br /> <br />
-    <a href="http://github.com/jxt/jXTend/blob/master/MIT-LICENSE.txt">MIT License</a> &nbsp;<a target="_blank" href='http://en.wikipedia.org/wiki/MIT_License'>Find out...</a><br />
-     <a href="http://github.com/jxt/jXTend/blob/master/GPL-LICENSE.txt">GPL License</a> &nbsp;<a target="_blank" href='http://en.wikipedia.org/wiki/GNU_General_Public_License'>Find out...</a><br />
+    <a href="http://github.com/jxt/AtOfis/blob/master/MIT-LICENSE.txt">MIT License</a> &nbsp;<a target="_blank" href='http://en.wikipedia.org/wiki/MIT_License'>Find out...</a><br />
+     <a href="http://github.com/jxt/AtOfis/blob/master/GPL-LICENSE.txt">GPL License</a> &nbsp;<a target="_blank" href='http://en.wikipedia.org/wiki/GNU_General_Public_License'>Find out...</a><br />
     </div>
  </div>
 </div>
@@ -156,8 +156,8 @@
              <div style="overflow:auto;background:#fff;height:100%;white-space:normal;padding:10px;margin:2px;">
                   <h1>DOWNLOAD</h1>
                   
-                  <a target="_blank" href="http://github.com/jxt/jXTend/zipball/master"><button>Download AtOfis 1.0.1 - ZIP</button></a>
-                  <a target="_blank" href="http://github.com/jxt/jXTend/tarball/master"><button>Download AtOfis 1.0.1 - TAR</button></a>
+                  <a target="_blank" href="http://github.com/jxt/AtOfis/zipball/master"><button>Download AtOfis 1.0.1 - ZIP</button></a>
+                  <a target="_blank" href="http://github.com/jxt/AtOfis/tarball/master"><button>Download AtOfis 1.0.1 - TAR</button></a>
                  
                   <br />
                   <br />
@@ -204,7 +204,7 @@
                <li><a href="#formattext"><span>Format Text</span></a></li>
                <li><a href="#insert"><span>Insert</span></a></li>
                <li><a href="#developer"><span>Developer</span></a></li>
-               <li><a href="http://www.atofis.com/ajaxtab.htm"><span>Ajax</span></a></li>
+               <li><a href="../callback/ajaxtab.htm"><span>Ajax</span></a></li>
              </ul>
             <div id="task">
                Put some task here

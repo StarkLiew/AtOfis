@@ -67,11 +67,14 @@
 	   	   if ($($(this).find("a").attr("href")).is("div")) $(this).parents(".xt-tab").find($(this).find("a").attr("href")).show();
 	   	   else{
 	   	       $("#xt-ajaxTab").show();
-	   	       //$("#xt-ajaxTab").load($(this).find("a").attr("href"));
+	   	       var callback = $(this).find("a").attr("href");
+	   	      $("#xt-ajaxTab").load(callback);
+
 	   	   }
 	   	   
-	   	   return false;
+	   	  
 	   	}   
+	   	 return false;
 	 }
 	}
 	
