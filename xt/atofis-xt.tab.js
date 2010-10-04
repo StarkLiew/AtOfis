@@ -13,7 +13,7 @@
 	$.fn.tab=function(options){
 		
 		 
-	    settings = $.extend({}, arguments.callee.defaults, options);
+	  settings = $.extend({}, arguments.callee.defaults, options);
 		_create(this);
 		
 
