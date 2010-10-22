@@ -13,7 +13,7 @@
 	$.fn.tab=function(options){
 		
 		 
-	  settings = $.extend({}, arguments.callee.defaults, options);
+	    settings = $.extend({}, arguments.callee.defaults, options);
 		_create(this);
 		
 
@@ -67,14 +67,20 @@
 	   	   if ($($(this).find("a").attr("href")).is("div")) $(this).parents(".xt-tab").find($(this).find("a").attr("href")).show();
 	   	   else{
 	   	       $("#xt-ajaxTab").show();
-	   	       var callback = $(this).find("a").attr("href");
-	   	      $("#xt-ajaxTab").load(callback);
-
+	   	       var $load = $('<div></div>').appendTo("#xt-ajaxTab");
+	   	       
+	   	       $load.width($("#xt-ajaxTab").innerWidth());
+	   	       $load.height($("#xt-ajaxTab").innerHeight());
+	   	       $load.addClass('xt');
+	   	       $load.addClass('xt-loading');
+	   	       
+	   	      $("#xt-ajaxTab").load($(this).find("a").attr("href"),function(){
+	   	           $load.remove();
+	   	      });
 	   	   }
 	   	   
-	   	  
+	   	   return false;
 	   	}   
-	   	 return false;
 	 }
 	}
 	

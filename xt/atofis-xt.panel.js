@@ -9,6 +9,7 @@
  */
 
 (function($){
+
 	$.fn.panel=function(options){
 		
 		 
@@ -20,22 +21,17 @@
 		    var wrapper;
 		    var content;
 		    if(settings.title!=""){
-		      $(_self).wrap("<div id="+$(_self).attr('id')+"></div>");
-		      $(_self).attr('id','');
-		         content=_self;
-             wrapper=$(_self).parent();
-             $(wrapper).prepend('<div style="height:22px;line-height:22px" class="xt-titlebar">'+settings.title+'</div>');
-             var titlebar=$(wrapper).find('.xt-titlebar');
-             $(wrapper).bind('resize',{titlebar:titlebar,content:content,layout:settings.layout},auto_resize);
-		    } else wrapper=_self;
-		      
+		      wrapper =$('<div dock="top" style="margin:0px;padding:2px;height:22px;line-height:22px" class="xt-titlebar">'+settings.title+'</div>');
+		      $(_self).prepend(wrapper);
+           wrapper = _self;
+		    } else wrapper=_self;	       
            
 		    $(wrapper).addClass("xt");
               $(wrapper).addClass("xt-panel");
 
 		  
 		    $(wrapper).css('z-index',"1");  
-		     $(wrapper).css('overflow','hidden');
+		     $(wrapper).css('overflow',settings.overflow);
 			  var height=0;
 			  if(settings.height=="fit"){
    
@@ -43,47 +39,58 @@
           var topElemTall=40;
 
                
-			    height=$(wrapper).parent().height();
-  
+			    height=$(wrapper).parent().innerHeight();
+        
 			  }else height=settings.height;
 
         if(settings.height!='auto'){
-        	 $(wrapper).css('overflow','hidden');
- 		  
+        	// $(wrapper).css('overflow','hidden');
  		    $(wrapper).height(height);
         }
-    	$(wrapper).width(settings.width);
-	
+    	 $(wrapper).width(settings.width);
+	 
         if(settings.bgcolor!=''){
           $(wrapper).css('background-color',settings.bgcolor);
         }        
 		    if(settings.border!=''){
           $(wrapper).css('border',settings.border);
         }     
-		    
-		  	/*if(settings.docking!='none'){
-		  	  $(wrapper).docking(settings.docking);
-		  	 
-		  	}			*/
-		 //   $(_self).bind('resize',resize_lastchildren);
+		     //Dock all children
+	       $(wrapper).dock();
+	       
+	       $(wrapper).bind('resize',function(event){
+	          
+	            var resizeTimeout=false;
+	            var $parent = $(this);
+	         
+	            var whenResize = function(){
+	             
+	                  $parent.dock(); 
+	                   if(resizeTimeout){
+                        clearTimeout(resizeTimeout);
+                        resizeTimeout=false;
+                }
+	                  
+	            }
+	           
+	           resizeTimeout=setTimeout(whenResize,10);
+	            
+	       });
+	       if($(wrapper).css('height')=='auto'){
+	         $(wrapper).css('overflow','hidden');
+	         $.dock.setParentHeight(wrapper);   
+	       }
+        
+         $(wrapper).parent().triggerHandler('resize');   
+        
+	          
 		  }
-		/*  function resize_lastchildren(event){
-		          var lastchild=$(this).find(":last-child"); 
-		          lastchild.height($(this).height()-2);
-		          $(this).children().width($(this).width());
-		          
-		  }*/
-     function auto_resize(event){
-       var titlebar =event.data.titlebar;
-       var content = event.data.content;
-       var layout = event.data.layout;
-       $(content).height($(this).height()-$(titlebar).height());
-       $(content).width($(this).width());
+		  
 
-       if(layout!="") rearrange_layout(content,layout);
-        $(content).triggerHandler('resize');
-        return false;
-     };
+		 function whenResize(){
+		   
+		 }
+    
      function rearrange_layout(wrapper,layout){
           switch(layout){
            case 'horizontal':
@@ -99,7 +106,7 @@
                 break;
            case 'vertical':
      
-                $(wrapper).find("> div").width($(wrapper).width()-2);
+                $(wrapper).find("> div").width($(wrapper).innerWidth());
                 
                 var totalHeight=0;
                 $(wrapper).find("> div").each(function(){
@@ -109,7 +116,7 @@
                 var lastElem = $(wrapper).find("> div:last")
               
                 var lastElemHeight=$(lastElem).height();
-                $(lastElem).height($(wrapper).height()-(totalHeight-lastElemHeight));
+                $(lastElem).height($(wrapper).innerHeight()-(totalHeight-lastElemHeight));
                 
                 break;
                 
@@ -125,6 +132,7 @@
       height:'auto',
       width:'auto',
       layout:'',
+      overflow:'hidden',
       bgcolor:'',
       border:'',
       title:''

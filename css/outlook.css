@@ -1,9 +1,10 @@
 .xt{font-size:11px;font-family:arial,tahoma, helvetica, sans-serif;}
+.xt a{text-decoration:none;}
 .xt div{white-space:nowrap;vertical-align:middle;z-index:1;}
 .xt label{font-size:11px;font-family:arial,tahoma, helvetica, sans-serif;}
 .xt-error-img{border:none;background:url(../images/xt/error.gif) 50% 50% no-repeat;}
 .xt-seperator{height:15px;background:url(../images/xt/xt_seperator.jpg) 50% 50% no-repeat ;display:inline-block;width:5px;}
-
+.xt-loading{background:url(../images/xt/loading4.gif) no-repeat 50% 50%;}
 .xt-watermark{color:#ccc;}
 /* Statusbar */
 .xt-statusbar{overflow:hidden;background:#DFE8F6 url(../images/xt/xt-statusbar.jpg) repeat-x;border:1px solid #b0cff7;}
@@ -104,4 +105,14 @@
 .xt-calendar button.prev{border:none;background:url(../images/xt/button_arrow_left.gif) no-repeat 50% 50%}
 .xt-calendar button.next{border:none;background:url(../images/xt/button_arrow_right.gif) no-repeat 50% 50%}
 
-
+/* Gridview */
+.xt-gridview{background:#fff;border:1px solid #7f9db9;}
+.xt-gridview-header{background:url(../images/xt/xt-gridview-column.jpg) repeat-x;border:1px solid #6593cf;}
+.xt-gridview-column{background:url(../images/xt/xt-gridview-column.jpg) repeat-x;border-right:1px solid #eee;color:#000;}
+.xt-gridview-column:active{background:url(../images/xt/xt-gridview-column-selected.jpg) repeat-x;border-right:1px solid #eee;color:#000;}
+.xt-gridview-row{border:1px solid transparent;border-bottom: 1px solid #eee;border-right: 1px solid #eee;}
+.xt-gridview-row-cell{border-right: 1px solid #eee;}
+.xt-gridview-row:hover{background:#eee;}
+.xt-gridview-row.selected{background:#b3c8e8;border:1px dotted #000;}
+.xt-gridview-cell{border-right: 1px solid #eee;}
+.xt-gridview-cell.selected{background:#fff;}

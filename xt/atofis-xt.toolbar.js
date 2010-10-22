@@ -21,7 +21,7 @@
         $(_self).css('line-height','16px');
         $(_self).css('vertical-align','middle');
         $(_self).css('white-space','nowrap');
-        $(_self).css("margin","0px");
+        $(_self).css("margin","2px");
         $(_self).find(".xt-normal-button").addClass("xt-tool-button");
         $(_self).find(".xt-normal-button").css("height","18px");          
         $(_self).children().css("float","left");
@@ -34,7 +34,7 @@
 			  $(_self).find(".seperator").html("&nbsp;");
 			  $(_self).find(".seperator").height(20);
 			  
-			   if(settings.docking!='none'){
+			  /* if(settings.docking!='none'){
 		      $(_self).docking(settings.docking);
          
           if(settings.width=='auto'){
@@ -42,7 +42,10 @@
              $(_self).width($('body').innerWidth()*99.4/100);
           
           }
-        }   
+        }   */
+        
+          $(_self).parent().triggerHandler('resize');
+          
 		  }
          
 	}

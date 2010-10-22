@@ -76,7 +76,7 @@
           var ctop =$(_self).offset().top;
           var cleft =$(_self).offset().left;
 
-          var btnWidth = $(_self).width();
+          var btnWidth = $(_self).outerWidth();
           if($(mn).width()<btnWidth){
             $(mn).width(btnWidth);
           }
@@ -108,7 +108,7 @@
 		     var menu = event.data.mn;
 		     var button = event.data.btn;
      
-		     $(menu).css("top",$(button).parent().offset().top+$(button).parent().height()+"px");
+		     $(menu).css("top",$(button).parent().offset().top+$(button).parent().innerHeight()+"px");
          $(menu).css("left",$(button).parent().offset().left+"px");
 
 		     $(menu).fadeIn();

@@ -6,7 +6,7 @@
     <meta http-equiv="Content-Type"content="text/html;charset=utf-8">    
     <meta http-equiv="X-UA-Compatible" content="IE=EmulateIE8"> 
     <meta name="google-site-verification" content="8w07JkrqcthcVqNajiuLfIehzQww7Sw0Qe7Q1zJYNQc" />
-     
+    
     <meta content="en" http-equiv="Content-Language">
     <meta name="AtOfis" content="jquery,jquery extender,jquery extend,jquery plugin">
     <meta http-equiv="Content-Type"content="text/html;charset=utf-8">    
@@ -14,22 +14,12 @@
     <meta content="width = 780" name="viewport">
     <meta content="IE=7" http-equiv="X-UA-Compatible">
     
+    <title>jQuery AtOfis Extender</title>
     
     <script type="text/javascript" src="../resources/jquery-1.4.2.min.js"></script>
-    <script type="text/javascript" src="../xt/atofis-xt.draggable.js"></script>
-    <script type="text/javascript" src="../xt/atofis-xt.docking.js"></script>
-    <script type="text/javascript" src="../xt/atofis-xt.mdilayout.js"></script>
-    <script type="text/javascript" src="../xt/atofis-xt.statusbar.js"></script>
-    <script type="text/javascript" src="../xt/atofis-xt.panel.js"></script>
-    <script type="text/javascript" src="../xt/atofis-xt.button.js"></script>
-    <script type="text/javascript" src="../xt/atofis-xt.toolbar.js"></script>
-    <script type="text/javascript" src="../xt/atofis-xt.textbox.js"></script>
-    <script type="text/javascript" src="../xt/atofis-xt.tooltip.js"></script>
-    <script type="text/javascript" src="../xt/atofis-xt.tab.js"></script>
-    <script type="text/javascript" src="../xt/atofis-xt.accordion.js"></script>
-    <script type="text/javascript" src="../xt/atofis-xt.menubar.js"></script>
-    <script type="text/javascript" src="../xt/atofis-xt.dialog.js"></script>
-    <script type="text/javascript" src="../xt/atofis-xt.calendar.js"></script>
+    <script type="text/javascript" src="../xt/atofis_1.0.1_min.js"></script>
+
+
     <style type="text/css">
         label{width:90px;float:left;margin:2px;}
         input[type='text']{float:left;margin:2px;}
@@ -42,21 +32,25 @@
 
 <script type="text/javascript">
     $(function(){
+           $("button").button();
+         
        $("#mainStatusbar").statusbar();
-       $("#mainHeader").panel({height:45});
+       $("#mainHeader").panel({height:34});
        $("#TopPanel").panel();
        $("#WestPanel").panel({title:'AtOfis Demo',width:200,layout:'vertical'});
-       $("#EastPanel").panel({width:200});
-       $("#content").panel();
-        $("#menubar").menubar();  //call without data to create an emply menubar first (for Ajax call only).
+       $("#EastPanel").panel({width:250,height:200,overflow:'auto'});
+       $("#content").panel({width:200,height:200,overflow:'auto'});
+       $("#menubar").menubar();  //call without data to create an empty menubar first (for Ajax call only).
         $.ajax({type:"GET",url:'../samplemenu.xml',dataType:"xml",
              success: function(xml) {
                   $("#menubar").menubar({data:xml,datatype:'xml'});    
                }
         });      
-       $("button").button();
        $("#toolbarpanel").toolbar();
-       $("#accordion").accordion({showOnOpen:'#a1',height:'fit'});
+         $("#accordion").accordion({showOnOpen:'#a1'});
+  
+          $('body').dock();
+     
     	 $("input[type='text'],input[type='password']").textbox();
     	 $("#searchtext").textbox({watermark:'Search...'});
     	 $("#uid").textbox({watermark:'User Id',required:true,errormsg:{required:'Please enter your user name.'}}); //demo using custom error messages
@@ -65,14 +59,7 @@
     	 //$(".textbox").textbox({number:true});
        $("#xt-tab").tab();
     
-       $("body").mdilayout({
-               '#mainStatusbar':{dock:'bottom'}, 
-               '#TopPanel':{dock:'top'}, 
-               '#WestPanel':{dock:'left'}, 
-               '#EastPanel':{dock:'right'},
-               '#content':{dock:'center'}
-             
-              });
+
           $("#xt-dialog").dialog({title:'AtOfis',modal:true, buttons:{
                  'Okay':function(){
                       $("#xt-dialog").dialog("close");                 
@@ -83,7 +70,12 @@
            $("#xt-dialog").dialog("show");
        });
               
-       $("#xt-calendar-demo").calendar({target:'.xt-calendar-value'});       
+       $("#xt-calendar-demo").calendar({target:'.xt-calendar-value'});
+      
+
+       $("#atgridview").gridview({header:{'Company':{width:150,bind:'company'},'Price':{width:80,bind:'price',align:'right'},'Change':{width:150,bind:'change_per'}},datatype:'xml',url:'../gridviewsampledata.xml'});    
+
+                     
        $("form").submit(function(){
        
        
@@ -93,16 +85,16 @@
 </script>
 <body>
 
-  <div id="TopPanel">
-   <div id="mainHeader" style="background:#000;text-align:center;">  
-     
-      <img src='../images/xt/atofis.gif' align="absmiddle" style="height:32px;width:56px;" /><span style="color:#ffffff;text-shadow: 1px 1px 0px #bad3ed;"> Project</span></h1>
-
+  <div dock='top' id="TopPanel" style='height:auto'>
+   <div dock='top' id="mainHeader" style="background:#000;text-align:center;">
+     <div dock='top' style="text-align:center;">    
+       <img src='../images/xt/atofis.gif' align="absmiddle" style="height:32px;width:56px;" /><span style="color:#ffffff;text-shadow: 1px 1px 0px #bad3ed;"> Project</span></h1>
+     </div>
    </div>
-       <div id="menubar">
+       <div dock='top' id="menubar">
           </div>
 
-   <div id="toolbarpanel"> 
+   <div dock='top' id="toolbarpanel"> 
         <button id="new" icon="../images/icon/contact.gif" tooltip="Create new contact">New</button>
         <button id="print" icon="../images/icon/print.gif" tooltip="Print"></button>
         <div class="seperator"></div>
@@ -120,12 +112,15 @@
      </div>
      
 </div>
-   <div id="WestPanel">
+   <div dock='bottom' id="mainStatusbar">
+      Copyright &copy; 2010 <a href="http://www.facebook.com/starkliew">Kuan Yaw, Liew</a>
+ 
+   </div>
+   <div dock='left' id="WestPanel" style='padding:0px;'>
      
-      
- <div id="accordion">
+  <div dock='fill' style='margin:0px;padding:0px;' id="accordion">
   <h3><a href="#a1">Forum Login</a></h3>
-  <div id="a1">
+  <div  id="a1">
     Sorry! Forum still under construction.
           <form method="get" action="index.php">
           <div style="padding:2px;">
@@ -142,30 +137,35 @@
   <div id="a2">
   <div style="white-space:normal;">
    <h2>AtOfis 1.0.1</h2> <br />
-   As long as the copyright header left intact, you are free to use AtOfis project for your personal  to commercial project.
+   As long as the copyright header left intact, you are free to use AtOfis project for your personal and commercial project.
     <br /> <br />
     License under: <br /> <br />
-    <a href="http://github.com/jxt/AtOfis/blob/master/MIT-LICENSE.txt">MIT License</a> &nbsp;<a target="_blank" href='http://en.wikipedia.org/wiki/MIT_License'>Find out...</a><br />
-     <a href="http://github.com/jxt/AtOfis/blob/master/GPL-LICENSE.txt">GPL License</a> &nbsp;<a target="_blank" href='http://en.wikipedia.org/wiki/GNU_General_Public_License'>Find out...</a><br />
+    <a href="http://github.com/jxt/jXTend/blob/master/MIT-LICENSE.txt">MIT License</a> &nbsp;<a target="_blank" href='http://en.wikipedia.org/wiki/MIT_License'>Find out...</a><br />
+     <a href="http://github.com/jxt/jXTend/blob/master/GPL-LICENSE.txt">GPL License</a> &nbsp;<a target="_blank" href='http://en.wikipedia.org/wiki/GNU_General_Public_License'>Find out...</a><br />
     </div>
  </div>
 </div>
      
    </div>
-     <div id="EastPanel">  
-             <div style="overflow:auto;background:#fff;height:100%;white-space:normal;padding:10px;margin:2px;">
+     <div dock='right' id="EastPanel">  
+             <div dock='top' style="background:#fff;white-space:normal;padding:10px;margin:2px;">
                   <h1>DOWNLOAD</h1>
-                  
-                  <a target="_blank" href="http://github.com/jxt/AtOfis/zipball/master"><button>Download AtOfis 1.0.1 - ZIP</button></a>
-                  <a target="_blank" href="http://github.com/jxt/AtOfis/tarball/master"><button>Download AtOfis 1.0.1 - TAR</button></a>
-                 
-                  <br />
+              
+                  <a target="_blank" href="http://www.atofis.com/xt/atofis_1.0.1.js"><button>AtOfis 1.0.1</button></a>
+               
+                  <h4>Min version</h4>
+                  <a target="_blank" href="http://www.atofis.com/xt/atofis_1.0.1_min.js"><button>AtOfis 1.0.1 Min</button></a>
+               
+                  <h4>Project Files</h4>
+                  <a target="_blank" href="http://github.com/jxt/jXTend/zipball/master"><button>AtOfis 1.0.1 Files - ZIP</button></a>
+                  <a target="_blank" href="http://github.com/jxt/jXTend/tarball/master"><button>AtOfis 1.0.1 Files - TAR</button></a>
+                    <br />
                   <br />
                  Requirement: jQuery 1.4 above <br>
                   <a target="_blank" href="http://www.jquery.com"><button>Learn more...</button></a>
                   <br/>       <br/>
                  <h3>TEAM</h3>
-                 AtOfis is an open source project therefore welcome anyone who wish to come in and echance it features.
+                 AtOfis is an open source project therefore welcome anyone who wish to come forward to echance it features or give valuable feedback to me.
                      <br/>       <br/>
                  <h3>SPONSOR AND DONATION</h3>
                    Hope for sponsor and donation. Currently I using my own saving to keep this project alive.
@@ -176,11 +176,11 @@
         
       </div>
 
-      <div id="content" >
+      <div dock='fill' id="content">
 
-        <div style="overflow:auto;background:#fff;height:100%;white-space:normal;padding:10px;">
+        <div dock='top' style="background:#fff;white-space:normal;padding:10px;">
  
-          <h3>Use AtOfis widgets to enrich your web app that build on top of the jQuery Library. Atofis simple and easy to use.</h3>
+          <h3>Use AtOfis widgets to enrich your web app that build on top of the jQuery Library. Atofis simple and easy to use. Try now! You never know.</h3>
           
           Default Theme: OutLook [outlook.css] <br />
                  
@@ -188,7 +188,7 @@
           
           <br />Current features (Last Updated: Sep, 23 2010):
           <ul>
-            <li><a href="../xt/atofis-xt.mdi.js">Mdi Layout</a></li>
+            <li><a href="../xt/atofis-xt.dock.js">Docking Engine</a></li>
             <li><a href="../xt/atofis-xt.panel.js">Panel (Dockable)</a></li>
             <li><a href="../xt/atofis-xt.menubar.js">Menubar</a></li>
             <li><a href="../xt/atofis-xt.toolbar.js">Toolbar</a></li>
@@ -222,7 +222,7 @@
           </div>
               
             </li>
-            <li><a href="../xt/atofis-xt.dialog.js">Dialog Beta (9/24/2010) NEW!</a><br /> 
+            <li><a href="../xt/atofis-xt.dialog.js">Dialog Beta (9/24/2010)</a><br /> 
               <button id="demoDialogShow">Click here to Show AtOfis Dialog </button>
                     
             <div id="xt-dialog">
@@ -230,7 +230,7 @@
             </div>
             </li>
       
-            <li><a href="../xt/atofis-xt.calendar.js">Calendar Beta (9/28/2010) NEW!</a><br />
+            <li><a href="../xt/atofis-xt.calendar.js">Calendar Beta (9/28/2010)</a><br />
               <label class="xt-calendar-value" style="width:100%" >Click the calendar below to change this text and textbox value.</label><br /> 
             <input type="text" class="xt-calendar-value" ></input><br />
             
@@ -239,10 +239,17 @@
             </div><br />
            
             </li>
-             <li><a href="../xt/atofis-xt.calendar.js">Dropdown Calendar Beta (9/28/2010) NEW!</a><br /> 
+             <li><a href="../xt/atofis-xt.calendar.js">Dropdown Calendar Beta (9/28/2010)</a><br /> 
                   <input type="text" id="dropdowncalendar" ></input>
                   
+            </li><br />
+              <li><a href="../xt/atofis-xt.calendar.js">Gridview Beta (10/12/2010) NEW!</a><br /> 
+                  <div id='atgridview'>
+                    
+                  </div>
+                  
             </li>
+        
           </ul><br />
           Up Coming:
             <ul>
@@ -267,20 +274,7 @@
         
       </div>
      
-   
-   <div id="mainStatusbar">
-      Copyright &copy; 2010 <a href="http://www.facebook.com/starkliew">Kuan Yaw, Liew</a>
- 
-   </div>
-   
-  
 
-  
-  
-  
-
- 
- <?php ?>
 </body>
 
 

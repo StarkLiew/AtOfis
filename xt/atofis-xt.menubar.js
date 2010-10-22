@@ -8,7 +8,7 @@
  * http://www.atofis.com/
  */
 
-
+//Sorry! Current version only support data in XML format.
 (function($){
 	$.fn.menubar=function(options){	
 	    settings = $.extend({}, arguments.callee.defaults, options);
@@ -21,8 +21,9 @@
         $(_menu).height(15);
         $(_menu).css("padding","2px");
         $(_menu).css("margin","2px");
-          if(settings.docking!='none')
-          $(_menu).docking(settings.docking);
+          /*if(settings.docking!='none')
+          $(_menu).docking(settings.docking);*/
+          
         
      switch (settings.datatype){
        case 'xml':
@@ -40,7 +41,7 @@
      }
      
     
-  
+     $(_menu).parent().triggerHandler('resize');
 
 		  } 
 
@@ -66,14 +67,18 @@
                         $(submenu).css("left",$(menuitem).offset().left+"px");
                         _createSubMenu(submenu,$(this));
                         $(submenu).hide();
-                     }    
+                     }else{
+                        $(menuitem).bind("click",{url:$(this).attr('url'),target:$(this).attr('target')},menu_click);
+                     }
+                     
                  });
                  return false;
 	    
 	  }
 	  function _createSubMenu(menu,data,nohoverclose){
 	      $(data).find("> *").each(function(){
-	      
+	         
+	         
            var menuitem=$("<div class='xt-menu-item'>"+$(this).attr("title")+"</div>").appendTo(menu);
            $(menuitem).css("padding","2px");
            $(menuitem).css("margin","0px");
@@ -92,7 +97,7 @@
              $(menuitem).bind("click",{sub:submenu,parentvisbile:true},open_submenu);
              
              $(submenu).css("top",$(menuitem).parent().offset().top+"px");
-             $(submenu).css("left",$(menuitem).parent().offset().left+$(menuitem).parent().width()+2+"px");
+             $(submenu).css("left",$(menuitem).parent().offset().left+$(menuitem).parent().outerWidth()+"px");
              $(submenu).hide();
              _createSubMenu(submenu,$(this),true);
               
@@ -100,11 +105,41 @@
              if(!nohoverclose){
                $(menuitem).bind("mouseover",hover_close_submenu);
              }
+             $(menuitem).bind("click",{url:$(this).attr('url'),target:$(this).attr('target')},menu_click);
            } 
            
            
            
         });
+	  }
+	  
+	  function menu_click(event){
+	    var url = event.data.url;
+	    var target = event.data.target;
+
+	    switch(target){
+	      case '_self':
+	           window.location=url;
+	           break;
+	      case '_blank':
+	           window.open(url);
+	           break;
+	       default:
+	           //ajax load
+	           if(target!="") $(target).load(url);
+	           break;    
+	    }
+	        
+	    
+	        
+	   
+	  
+	
+	   close_submenu(event); 
+	        
+	            
+	   return false;     
+	    
 	  }
 	  function open_submenu(event){
 	       //Close other manual except myself or my parent
