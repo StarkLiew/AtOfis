@@ -45,7 +45,6 @@
         }   */
         
           $(_self).parent().triggerHandler('resize');
-          
 		  }
          
 	}

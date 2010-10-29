@@ -69,8 +69,8 @@
         	 }
 		  function _operation(_self){
 		           if(!$(_self).find("a").hasClass("open")){        
-                 $(_self).parent().find("h3 a").removeClass("open");
-                 $(_self).parent().find("h3").next().slideUp();
+                 $("h3 a").removeClass("open");
+                 $("h3").next().slideUp();
                  $(_self).next().slideDown();
                  $(_self).find("a").addClass("open");
                }		  	       

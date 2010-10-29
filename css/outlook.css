@@ -116,3 +116,6 @@
 .xt-gridview-row.selected{background:#b3c8e8;border:1px dotted #000;}
 .xt-gridview-cell{border-right: 1px solid #eee;}
 .xt-gridview-cell.selected{background:#fff;}
+
+/*spliter */
+.xt-spliter{border:1px solid #b3c8e8;background:#7f9db9; }

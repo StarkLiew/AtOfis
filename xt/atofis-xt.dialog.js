@@ -26,6 +26,10 @@
           $(_self).addClass('xt');
           $(_self).addClass('xt-dialog');
           $(_self).css('padding','0px');
+          $(_self).css('margin','0px');
+          $(_self).appendTo('body');
+          $(_self).css("position","absolute");
+          $(_self).css("z-index","16000");
           $(_self).height(settings.height);
           $(_self).width(settings.width);
           
@@ -43,8 +47,9 @@
           $(_self).html("");
           var $titlebar=$("<div class='titlebar'><div class='topleft'><div class='topright'><div class='top'></div></div></div></div>").appendTo($(_self));
           $titlebar.height(31);
+          $titlebar.width($(_self).outerWidth());
    
-
+           
      
           $titlebar.css('padding','0px')
           $titlebar.find('div').css('display','inline-block');
@@ -56,20 +61,20 @@
           $titlebar.find('.topright').css('margin','0px')
           
           $titlebar.find('div').height(31); 
-          $titlebar.width($(_self).outerWidth());
+          
           $titlebar.css('margin','0px');
           $titlebar.find('.topleft').width(8);
-          $titlebar.find('.topright').width($titlebar.outerWidth());
+          $titlebar.find('.topright').width($(_self).outerWidth()+2);
           //$titlebar.find('.topleft').css('border','1px solid blue');
           //$titlebar.find('.topright').css('border','1px solid yellow');
-          //$titlebar.find('.top').css('border','1px solid #f00');
-          $titlebar.find('.top').width($titlebar.innerWidth()-15);
+         // $titlebar.find('.top').css('border','1px solid #f00');
+          //$titlebar.find('.top').width($titlebar.outerWidth());
           
-          
+          $titlebar.find('.top').width($(_self).outerWidth()-12);
           $titlebar.find('.top').html(settings.title);
           $titlebar.find('.top').css('margin-left','7px');
-          $titlebar.find('.top').css('margin-right','7px');
-          $titlebar.find('.top').css('padding-top','8px');
+          //$titlebar.find('.top').css('margin-right','8px');
+          $titlebar.find('.top').css('padding-top','5px');
           var $titlebutton = $("<button class='titlebutton'></button>").appendTo($titlebar.find('.top'));
           $titlebutton.css("float","right");
           $titlebutton.css("cursor","pointer");      
@@ -81,13 +86,11 @@
           var $content = $("<div class='content'><div class='inner'>"+_content+"</div></div>").appendTo(_self);
           $content.find(".inner").css("padding","2px");
           $content.css("padding","0px");
-          $content.height($(_self).innerHeight()-32);
+          $content.height($(_self).outerHeight()-32);
           $content.width($(_self).outerWidth());
           $content.find(".inner").width($content.innerWidth());
           $content.find(".inner").height($content.innerHeight());
-          $(_self).appendTo('body');
-          $(_self).css("position","absolute");
-          $(_self).css("z-index","16000");
+
           var $buttoncontainer = $("<div></div>").appendTo($content.find(".inner"));
           $buttoncontainer.css("text-align","center");
           $.each(settings.buttons,function(name,fn){

@@ -32,15 +32,17 @@
 
 <script type="text/javascript">
     $(function(){
-           $("button").button();
-         
+       $("button").button();
+       
        $("#mainStatusbar").statusbar();
        $("#mainHeader").panel({height:34});
+       
        $("#TopPanel").panel();
        $("#WestPanel").panel({title:'AtOfis Demo',width:200,layout:'vertical'});
-       $("#EastPanel").panel({width:250,height:200,overflow:'auto'});
-       $("#content").panel({width:200,height:200,overflow:'auto'});
-       $("#menubar").menubar();  //call without data to create an empty menubar first (for Ajax call only).
+       $("#EastPanel").panel({width:200,overflow:'auto'});
+       $("#content").panel({width:400,height:200,overflow:'auto'});
+       $("#menubar").menubar(); //call without data to create an empty menubar first (for Ajax call only).
+       
         $.ajax({type:"GET",url:'../samplemenu.xml',dataType:"xml",
              success: function(xml) {
                   $("#menubar").menubar({data:xml,datatype:'xml'});    
@@ -48,15 +50,18 @@
         });      
        $("#toolbarpanel").toolbar();
          $("#accordion").accordion({showOnOpen:'#a1'});
-  
-          $('body').dock();
-     
-    	 $("input[type='text'],input[type='password']").textbox();
-    	 $("#searchtext").textbox({watermark:'Search...'});
-    	 $("#uid").textbox({watermark:'User Id',required:true,errormsg:{required:'Please enter your user name.'}}); //demo using custom error messages
-    	 $("#pwd").textbox({watermark:'Password',required:true});
-    	 $("#dropdowncalendar").textbox({date:true,datelocal:'d/m/y',watermark:'d/m/y'});
-    	 //$(".textbox").textbox({number:true});
+               $('body').dock();
+              
+       $("#split1").vsplitter({columnWidth:[200,600],fixed:1});
+       //$("#split1 .xt-spliter").tooltip({text:'New! Vertical Splitter'}); 
+       $("#split2").vsplitter({columnWidth:[400,200],fixed:2});  
+       
+       $("input[type='text'],input[type='password']").textbox();
+       $("#searchtext").textbox({watermark:'Search...'});
+       $("#uid").textbox({watermark:'User Id',required:true,errormsg:{required:'Please enter your user name.'}}); //demo using custom error messages
+       $("#pwd").textbox({watermark:'Password',required:true});
+       $("#dropdowncalendar").textbox({date:true,datelocal:'d/m/y',watermark:'d/m/y'});
+       //$(".textbox").textbox({number:true});
        $("#xt-tab").tab();
     
 
@@ -112,11 +117,13 @@
      </div>
      
 </div>
-   <div dock='bottom' id="mainStatusbar">
+  <div dock='bottom' id="mainStatusbar">
       Copyright &copy; 2010 <a href="http://www.facebook.com/starkliew">Kuan Yaw, Liew</a>
  
    </div>
-   <div dock='left' id="WestPanel" style='padding:0px;'>
+   
+  <div id='split1'  dock='fill'>
+   <div  id="WestPanel" style='padding:0px;'>
      
   <div dock='fill' style='margin:0px;padding:0px;' id="accordion">
   <h3><a href="#a1">Forum Login</a></h3>
@@ -147,40 +154,13 @@
 </div>
      
    </div>
-     <div dock='right' id="EastPanel">  
-             <div dock='top' style="background:#fff;white-space:normal;padding:10px;margin:2px;">
-                  <h1>DOWNLOAD</h1>
-              
-                  <a target="_blank" href="http://www.atofis.com/xt/atofis_1.0.1.js"><button>AtOfis 1.0.1</button></a>
-               
-                  <h4>Min version</h4>
-                  <a target="_blank" href="http://www.atofis.com/xt/atofis_1.0.1_min.js"><button>AtOfis 1.0.1 Min</button></a>
-               
-                  <h4>Project Files</h4>
-                  <a target="_blank" href="http://github.com/jxt/jXTend/zipball/master"><button>AtOfis 1.0.1 Files - ZIP</button></a>
-                  <a target="_blank" href="http://github.com/jxt/jXTend/tarball/master"><button>AtOfis 1.0.1 Files - TAR</button></a>
-                    <br />
-                  <br />
-                 Requirement: jQuery 1.4 above <br>
-                  <a target="_blank" href="http://www.jquery.com"><button>Learn more...</button></a>
-                  <br/>       <br/>
-                 <h3>TEAM</h3>
-                 AtOfis is an open source project therefore welcome anyone who wish to come forward to echance it features or give valuable feedback to me.
-                     <br/>       <br/>
-                 <h3>SPONSOR AND DONATION</h3>
-                   Hope for sponsor and donation. Currently I using my own saving to keep this project alive.
-                      <br/>       <br/>
-                       
 
-            </div>
-        
-      </div>
+   <div id='split2' dock='fill'>
+       <div id="content" > 
 
-      <div dock='fill' id="content">
-
-        <div dock='top' style="background:#fff;white-space:normal;padding:10px;">
+        <div style="background:#fff;white-space:normal;padding:10px;">
  
-          <h3>Use AtOfis widgets to enrich your web app that build on top of the jQuery Library. Atofis simple and easy to use. Try now! You never know.</h3>
+          <h3>Use AtOfis widgets to enrich your web app that build on top of the jQuery Library. Atofis simple and easy to use.</h3>
           
           Default Theme: OutLook [outlook.css] <br />
                  
@@ -246,24 +226,25 @@
               <li><a href="../xt/atofis-xt.calendar.js">Gridview Beta (10/12/2010) NEW!</a><br /> 
                   <div id='atgridview'>
                     
-                  </div>
+                  </div><br />
                   
             </li>
-        
+            <li><a href="../xt/atofis-xt.vsplitter.js">Vertical Splitter (10/27/2010) !New</a></li>
           </ul><br />
           Up Coming:
             <ul>
-            <li>Resizeable layout with drag and drop feature</li>
+            
+            <li>Horizontal Splitter</li>
             <li>Form Layout</li>
             <li>Treeview</li>
             <li>Listview</li>
-            <li>Gridview</li>
             <li>Gridview Dropdown</li>
             <li>Numeric Keyboard Dropdown</li>
             <li>Event Calendar</li>
             <li>Slider</li>
             <li>Progress Bar</li>
             <li>Ajax File Uploader</li>
+            
           </ul>
           
           <p>Meantime, due to time contraint I only manage to release a few features. My next release will be data gridview with scrollable and paging which is still under debuging.</p>   
@@ -273,7 +254,34 @@
         </div>
         
       </div>
+       <div  id="EastPanel">  
+             <div dock='fill' style="background:#fff;white-space:normal;padding:10px;margin:2px;">
+                  <h1>DOWNLOAD</h1>
+                  <h3>Loose version</h3>
+                  <a target="_blank" href="http://github.com/jxt/jXTend/zipball/master"><button>Download AtOfis 1.0.1 - ZIP</button></a>
+                  <a target="_blank" href="http://github.com/jxt/jXTend/tarball/master"><button>Download AtOfis 1.0.1 - TAR</button></a>
+                  <h3>Min version</h3>
+                  <a target="_blank" href="http://www.atofis.com/xt/atofis_1.0.1_min.js"><button>Download AtOfis 1.0.1 Min</button></a>
+                  <br />
+                  <br />
+                 Requirement: jQuery 1.4 above <br>
+                  <a target="_blank" href="http://www.jquery.com"><button>Learn more...</button></a>
+                  <br/>       <br/>
+                 <h3>TEAM</h3>
+                 AtOfis is an open source project therefore welcome anyone who wish to come in and echance it features.
+                     <br/>       <br/>
+                 <h3>SPONSOR AND DONATION</h3>
+                   Hope for sponsor and donation. Currently I using my own saving to keep this project alive.
+                      <br/>       <br/>
+                       
+
+            </div>
+        
+      </div>
+     </div>
+  </div> 
      
+
 
 </body>
 

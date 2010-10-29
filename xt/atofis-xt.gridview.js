@@ -57,6 +57,8 @@
        $gridwrapper.scroll(function(){
            $columnWrapper.scrollLeft($gridwrapper.scrollLeft());
        });
+       
+
     },
     makeColumn:function(){
        
@@ -74,6 +76,7 @@
        $column.addClass('xt-gridview-column');
        $column.css('overflow','hidden');
        $column.width(18);
+       columnWidth+=$column.outerWidth();
        $column.height(gridsettings.headerHeight);
        idx = 1;
        $.each(gridsettings.header,function(i,n){
@@ -91,7 +94,7 @@
           $column.css('cursor','pointer');
           $column.css('overflow','hidden');
           if(n.align!='') $column.css('text-align',n.align);
-          columnWidth+=n.width;
+          columnWidth+=$column.outerWidth();
           idx+=1;
        });
        $gridcontent.width(columnWidth);
@@ -174,8 +177,31 @@
                row_idx+=1;
                col_idx=0;
             });
-
+     $gridcontent.keydown(function(event){
+          var $grid= $(this);
+            
+          if(event.which==40){
+            var $current=$grid.find('.xt-gridview-row.selected');
+            if($current.index()==$grid.children().size()-1) return false;
+            $current.removeClass('selected');
+            $current=$current.next().addClass('selected');
+            if($current.index()==$grid.children().size()-1)
+              $gridwrapper.scrollTop($current.position().top);
+            
+          }
+         if(event.which==38){
+            
+            var $current=$grid.find('.xt-gridview-row.selected');
+            var $first = $grid.find('.xt-gridview-row:first');
+            if($current.index()==0) return false;
+            $current.removeClass('selected');
+            $current=$current.prev().addClass('selected');
+            if($current.index()==0)
+             $gridwrapper.scrollTop(0);
+          }
+       });
              $gridwrapper.removeClass('xt-loading'); 
+    
     },
     setColumWidth: function($col, maxColWidth, textLength){
           if(maxColWidth<=textLength){
